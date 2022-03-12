@@ -7,7 +7,7 @@ int main () {
     pole[0]=a1;
 
     printf("%d je zacatecni cislo \t %d  je kolik cisel \t %d  je po kolika\n",a1,n,d);
-        for(int i=1;i<n;i++){
+        for(int i=1;i<n+1;i++){
         pole[i]=pole[i-1]+d;
         printf("%d\n",pole[i]);
         }
