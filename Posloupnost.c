@@ -1,12 +1,13 @@
 #include <stdio.h>
-const int  n = 5;
+const int  n = 8;
 int a1 = 6;
-int d = 3;
+int d = 5;
 int main () {
     int pole[n];
-    pole[0]=a1+d;
+    pole[0]=a1;
+
     printf("%d je zacatecni cislo \t %d  je kolik cisel \t %d  je po kolika\n",a1,n,d);
-    for(int i=1;i<n;i++){
+        for(int i=1;i<n;i++){
         pole[i]=pole[i-1]+d;
         printf("%d\n",pole[i]);
         }
