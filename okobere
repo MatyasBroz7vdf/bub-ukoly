@@ -1,0 +1,175 @@
+#include <stdio.h>       
+
+ #include <stdlib.h>       
+
+ #include <time.h>      
+
+ int prevod(int z){    
+
+         if(z == 0){return 0;}   
+
+         if(z >  39){z = z - 39;return z;}    
+
+         if(z >  26){z = z - 26;return z;}    
+
+         if(z >  13){z = z - 13;return z;}    
+
+         if(z <= 13){          ;return z;}    
+
+      return 0;   
+
+ }    
+
+ char prevodzn(int z){    
+
+         int b;   
+
+         if(z == 0){return 0;}     
+
+         if(z >  39){b = 'l';return b;}    
+
+         if(z >  26){b = 'p';return b;}    
+
+         if(z >  13){b = 'k';return b;}    
+
+         if(z <= 13){b = 's';return b;}    
+
+ return 0;   
+
+ }    
+
+ int g = 2;   
+
+ int soucet = 0;   
+
+ int karty[51];      
+
+ int mojekarty[13] = {0};       
+
+ char znak[13] = {0};      
+
+ int p = 0;   
+
+ 
+
+ int main() {       
+
+     srand(time(NULL));      
+
+     for (int x = 0; x < 52; x++){     
+
+         //generátor čísel        
+
+         karty[x] = x+1;    
+
+     }      
+
+     for(int x = 0; x < 13; x ++){      
+
+         // vyber nahodne karty a jeji ulozeni do moje karty    
+
+         p = rand()%52;  
+
+         mojekarty[x] = karty[p];  
+
+         if(karty[p]==0){   
+
+         x--;   
+
+         continue;   
+
+         }   
+
+         karty[p] = 0;   
+
+     }    
+
+     for (int x = 0; x < 13; x++){    
+
+     // prevod karet    
+
+     znak[x] = prevodzn(mojekarty[x]);  
+
+     mojekarty[x] = prevod(mojekarty[x]);    
+
+     }    
+
+     for (int x = 0; x < 20; x++){    
+
+     if(x==0){ 
+
+    printf("Tvoje karta je %d %c\n",mojekarty[0],znak[0]); 
+
+    } 
+
+         // hlavni program - otazka na dalsi kartu, vždy vyprintovat všechny karty X krát;    
+
+         printf("Chces dalsi kartu? - A/N\n");   
+
+         char a;  
+
+         scanf("  %s",&a);  
+
+             if(a=='N'){   
+
+             break;   
+
+             }   
+
+             else{   
+
+                 soucet = 0;   
+
+                printf("Tvoje karty jsou\n");   
+
+                     for (int x = 0; x < g; x++){    
+
+                         soucet = soucet + mojekarty[x];   
+
+                         printf("%d  %c\t",mojekarty[x],znak[x]);   
+
+                     }   
+
+                 printf("\n");  
+
+                 g++;   
+
+                 printf("Tvuj soucet je %d\n",soucet);  
+
+             }   
+
+         // když průchod for cyklem ve for cyklu tak po každém    
+
+         //kole zvýšit proměnou G o 1 s každým průchodem  
+
+         if(soucet>21){   
+
+                     break;  
+
+                 }   
+
+     }   
+
+     printf("Tvuj vysledek je %d\n",soucet);   
+
+                  if(soucet>21){   
+
+                 printf("Prohral jsi...");   
+
+                 }   
+
+                 else if(soucet ==21){   
+
+                 printf("Perfektni");   
+
+                  }   
+
+                 else{   
+
+                 printf("Vyhral jsi...");   
+
+                 }   
+
+ return 0;   
+
+ }      
